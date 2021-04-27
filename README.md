@@ -211,7 +211,8 @@ un salto de línea, para colocar la posición del siguiente grupo de objetos.<br
 
 <!-- CONTACT -->
 ## Contacto
-Implementado por:
-        Luis Carlos Marval - 12-10620 - luiscarm77@gmail.com 
-		Fabio Suárez - 12-10578 - fadasgo@gmail.com
+
+Luis Carlos Marval - 12-10620 - luiscarm77@gmail.com 
+
+Fabio Suárez - 12-10578 - fadasgo@gmail.com
 
