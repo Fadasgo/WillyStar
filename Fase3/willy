@@ -1,0 +1,19 @@
+#!/bin/bash
+ if [ "$#" -eq  "0" ]
+   then
+   	echo "Introduzca el nombre del archivo a interpretar:"
+   	read var1
+	echo "Introduzca el nombre de la tarea a ejecutar: "
+	read var2
+	echo "Introduzca el flag -m o -a "
+	read var3
+	echo "Introduzca la cantidad de segundos sin corchetes. por ejemplo 500  (opcional)"
+	read var4
+   	clear
+   	python3 main.py $var1 $var2 $var3 $var4
+
+ else
+ 	clear
+ 	python3 main.py $1 $2 $3 $4
+
+ fi

@@ -1,0 +1,32 @@
+begin-world w2
+	World 6 6;
+	Start at 4 4 heading east;
+	Wall north from 6 1 to 6 6;
+	Basket of capacity 10;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota in basket;
+	{{si se descomenta la siguiente linea genera conflicto por que no se puede poner un objeto donde fue definida una pared}}
+	--Place 5 of pelota at 6 1;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of celular in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 5 5;
+	Final goal is g1;
+end-world
+
+begin-task t1 on w2
+	-- conflicto por pared
+	turn-left;
+	repeat 2 times move;
+	-- descomentando  el clear no genera error, ya que no evalua a true
+	-- por lo que willy no se sale del index del mundo
+	--clear t;
+	if (t and true) or f then move;
+				
+end-task

@@ -1,0 +1,57 @@
+begin-world w2
+	World 6 6;
+	Wall west from 6 6 to 1 6;
+	Basket of capacity 7;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota at 1 1;
+	Place 1 of pelota in basket;
+	Place 1 of pelota in basket;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Start at 1 1 heading east;
+	Goal g1 is willy is at 1 1;
+	--Final goal is g1;
+
+	{{se prueba el funcionamiento de los final goal de goals con booleanos}}
+	Final goal is (t and g1);
+end-world
+
+begin-task t1 on w2
+	-- Prueba que tiene como finalidad mostrar las anidaciones entre varias funciones
+	-- y sus llamadas
+	define x as begin
+			define z as begin
+					move;
+					move;
+			            end
+					
+		   	define y as begin
+					z;
+				    end
+			y;
+			define a as begin
+					move;
+				    end
+
+			define r as begin
+					move;
+				    end
+			a;
+                     end
+
+	define x1 as x;
+	define a as begin
+			move;
+			move;
+		    end
+	x;
+	if f then move;
+	define m as if t then move;
+	m;
+end-task

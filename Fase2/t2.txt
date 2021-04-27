@@ -1,0 +1,48 @@
+begin-world w1
+	World 10 10;;;;
+	Wall north from 5 5 to 10 10;
+	Object-type pelota of color red;
+	Place 5 of pelota at 4 4;
+	Place 2 of pelota in basket;
+	Start at 1 1 heading south;
+	Basket of capacity 20;
+	;
+	Boolean boo1 with initial value true;
+	Goal g1 is willy is at 1 1;
+	Goal g2 is 7 pelota objects in Basket;
+	Goal g3 is 6 pelota objects at 4 4;
+	Goal g4 is 10000 pelota objects at 4 4;
+	Final goal is g1;
+	Final goal is g2 and g3;
+	Final goal is g1 or g1;
+	Final goal is not (g4 and (g1 or g2));
+end-world
+
+begin-task t1 on w1
+	if (found(a)) then move;;;;;;;;;;;;;;;;
+
+	if(found(a)) then move;
+		else move;
+
+	if (found(a)) then if(found(a)) then move;
+		else move;
+
+	repeat 5 times move;
+
+	while(carrying(a)) do move;
+
+	define x as move;
+
+	begin
+		move;
+		x;;;;;;;;
+	end
+
+	define x as begin
+		move;
+		x;
+		define x as begin
+			move;
+		end
+	end
+end-task

@@ -1,0 +1,47 @@
+begin-world w2
+	World 6 6;
+	Wall west from 6 6 to 1 6;
+	Basket of capacity 15;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota at 6 1;
+	Place 5 of pelota in basket;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Start at 1 5 heading east;
+	Goal g1 is willy is at 1 5;
+	Final goal is g1 and t;
+end-world
+
+begin-task t1 on w2
+    	-- se buscar darle la vuelta a la matriz con distintos casos
+	
+	define y as if not(front-clear) then
+			turn-right;
+
+	define x as begin 
+			while front-clear do
+				move;
+			y;
+		    end
+
+	
+	define x1 as x;
+
+	define x2 as begin
+				x;	
+				define x3 as begin
+					     	x1;
+					     end
+				x3;
+		       end
+	
+	x;
+	x1;
+	x2;
+end-task

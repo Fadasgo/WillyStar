@@ -1,0 +1,10 @@
+begin-world w1
+	;;;;;;;;;
+end-world
+
+begin-task t1 on w1
+	if (found(a)) then move;;;
+	
+	if(found(a)) then move;
+		else move;
+end-task

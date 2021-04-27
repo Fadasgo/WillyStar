@@ -1,0 +1,41 @@
+begin-world w2
+	World 6 6;
+	Start at 1 2 heading east;
+	Wall south from 5 6 to 5 1;
+	Basket of capacity 10;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota in basket;
+	Place 5 of pelota at 6 1;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of celular in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 5 5;
+	Final goal is g1;
+end-world
+
+begin-task t1 on w2
+	{{Conflicto por pared}}
+	drop pelota;
+	if looking-east then move;
+	drop pelota;
+	-- en este caso como se setea a falso a t no choca willy contra la pared
+	-- comentando flip t se genera un error
+	define x as begin 
+			repeat 2 times begin
+					drop pelota;
+					move;
+				       end
+			flip t;
+			if t then move;
+			drop pelota;
+				
+		    end
+
+	x;
+end-task

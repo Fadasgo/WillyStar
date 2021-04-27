@@ -1,0 +1,65 @@
+begin-world w2
+	World 6 6;
+	Start at 2 2 heading east;
+	Wall north from 6 1 to 6 6;
+	Wall west from 6 6 to 1 6;
+	Wall east from 1 1 to 5 1;
+	Wall east from 1 5 to 5 5;
+	Wall east from 3 2 to 4 2;
+	Wall south from 3 2 to 3 1;
+	Wall south from 3 2 to 3 1;
+	Wall south from 1 6 to 1 1;
+	Basket of capacity 13;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 10 of pelota in basket;
+	Place 1 of corneta in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 5 2;
+	Goal g2 is 1 corneta objects in Basket;
+	Goal g3 is 1 pelota objects at 5 2;
+	Final goal is (g1 and ((g2 and t) or f) and g3);
+end-world
+
+begin-task t1 on w2
+	define x as if not front-clear and not right-clear then 
+		begin 
+         	  turn-left;
+                  drop pelota;
+	  	    while front-clear do 
+			begin
+			  move;
+			  drop pelota;
+			end
+			y;
+                 end	
+	--descomentando la linea de abajo error		
+	--y;
+
+	define y as if (not front-clear and not left-clear and looking-north) then 
+		begin 
+			turn-right;
+			drop pelota;
+			while front-clear do 		
+				begin	
+			          move;
+       				  drop pelota;
+				end
+			z;
+		end
+
+	define z as if (not front-clear and not left-clear and looking-east) then 
+		begin 
+			turn-right;
+			drop pelota;
+			while front-clear do 		
+				begin	
+			          move;
+       				  drop pelota;
+				end
+		end
+	x;
+
+end-task

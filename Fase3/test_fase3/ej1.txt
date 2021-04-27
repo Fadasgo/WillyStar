@@ -1,0 +1,44 @@
+begin-world w2
+	World 6 6;
+	Start at 1 1 heading east;
+	--Wall north from 2 1 to 2 6;
+	--Wall east from 1 2 to 6 2;
+	Wall west from 6 6 to 1 6;
+	Wall south from 6 6 to 6 1;
+	Basket of capacity 6;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 1 of pelota in basket;
+	Place 1 of pelota in basket;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 1 1;
+	--Start at 1 1 heading north;
+	Final goal is g1;
+end-world
+
+begin-task t1 on w2
+	drop pelota;
+	move;
+	drop pelota;
+	move;
+	if t and looking-east then drop corneta; else if f then drop celular; else move;
+	if f then move; else begin move; move; end
+	{{if looking-east then
+				begin
+				    if not front-clear then
+					    begin 
+						turn-right; 
+						if front-clear then
+						    begin 
+							move; turn-right;
+						    end 
+					    end 
+				end
+	else move;}}
+
+end-task
+

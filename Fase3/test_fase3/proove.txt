@@ -1,0 +1,59 @@
+begin-world w2
+	World 6 6;
+	Start at 2 2 heading east;
+	Wall west from 6 6 to 1 6;
+	Wall north from 1 1 to 1 6;
+	Basket of capacity 10;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota in basket;
+	Place 5 of pelota at 6 1;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of celular in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 5 5;
+	Final goal is g1;
+end-world
+
+begin-task t1 on w2
+	define dp as begin
+			drop pelota;
+			move;
+		     end
+	define dc as begin 
+			drop corneta;
+			move;
+				
+		     end
+
+	define y as if not(front-clear) then
+			turn-left;
+
+	define x as begin 
+			while front-clear do
+				move;
+			y;
+		    end	
+	dc;
+	dp;
+
+	define pc as begin
+			drop corneta;
+			pick corneta;
+			move;
+		    end
+	pc;
+	
+	if carrying(pelota) then drop pelota; else move;
+
+	if found(pelota) then pick pelota; else move;
+
+	if found(pelota) then pick pelota; else move;
+
+	
+end-task

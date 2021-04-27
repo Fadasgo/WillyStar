@@ -1,0 +1,40 @@
+begin-world w2
+	World 6 6;
+	Start at 1 4 heading east;
+	Wall north from 6 1 to 6 6;
+	Wall east from 1 1 to 5 1;
+	Wall east from 1 5 to 5 5;
+	Basket of capacity 13;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 10 of pelota in basket;
+	Place 1 of corneta in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 4 4;
+	Goal g2 is 1 corneta objects in Basket;
+	Goal g3 is 0 pelota objects at 4 4;
+	Final goal is (g1 and ((g2 and t) or f) or g3);
+end-world
+
+begin-task t1 on w2
+
+ define y as begin move; end
+	
+ define x as begin
+		move;
+		define x as begin
+		     		move;
+				move;
+		    	    end
+		y;
+		define y1 as y;		
+		define m as begin y1; end
+		m;
+
+	       end
+	
+	x;
+
+end-task

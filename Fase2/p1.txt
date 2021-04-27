@@ -1,0 +1,36 @@
+begin-world w2
+	World 6 6;
+	Start at 2 2 heading north;
+	Wall west from 6 6 to 1 6;
+	Wall north from 3 1 to 3 6;
+	Basket of capacity 10;
+	Object-type pelota of color red;
+	Object-type corneta of color blue;
+	Object-type celular of color yellow;
+	Place 5 of pelota in basket;
+	Place 5 of pelota at 6 1;
+	Place 1 of celular in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of corneta in basket;
+	Place 1 of celular in basket;
+	Boolean t with initial value true;
+	Boolean f with initial value false;
+	Goal g1 is willy is at 2 4;
+	Final goal is g1;
+end-world
+
+begin-task t1 on w2
+	drop pelota;
+	drop corneta;
+	drop celular;
+	move;
+	drop corneta;
+	drop celular;
+	pick celular;
+	move;
+	--descomentando los move se genera error
+	--move;
+	--move;
+	
+end-task

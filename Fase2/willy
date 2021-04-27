@@ -1,0 +1,14 @@
+#!/bin/bash
+ if [ "$#" -eq  "0" ]
+   then
+   	echo "Introduzca el nombre del archivo a revisar por el parser:"
+   	read var1
+   	clear
+   	python3 main.py $var1
+
+ else
+ 	clear
+ 	python3 main.py $1
+ fi
+
+
